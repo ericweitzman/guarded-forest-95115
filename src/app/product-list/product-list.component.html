@@ -1,0 +1,46 @@
+<h2>Products</h2>
+
+<h2> Buttons for http requests</h2>
+
+<button (click)="getPosts()">Get Posts</button>
+
+<div *ngFor="let post of posts | async">
+    {{post | json}}
+</div>
+
+<button (click)="createPost()"> Create Post</button>
+{{newPost | async | json}}
+
+<button (click)="getPeople()"> Get People</button>
+{{ data | async | json}}
+
+
+
+<div *ngFor="let product of products">
+    <h3>
+        <a [title]="product.name + ' details'">
+            {{product.name}}
+        </a>
+        
+    </h3>
+
+    <p *ngIf="product.description">
+        Desciption: {{product.description}}
+    </p>
+    
+    <button (click)="share()">
+        Share
+    </button>
+
+    <app-product-alerts
+        [product]="product"
+        (notify)="onNotify()">
+
+    </app-product-alerts>
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
